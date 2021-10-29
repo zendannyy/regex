@@ -51,7 +51,7 @@ Printing a subscript 1
 
 Searching for traceroute packets with a low TTL 
 
-
+<br>
 More advanced grep 
 ![Grep Regex](/images/grep_https.png)
 
