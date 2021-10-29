@@ -135,10 +135,10 @@ Not really, besides /bib /time ? test the time of script runtime
 
 Python, unlike GREP 
 
+![Python Regex](/images/Python_unlike_grep.png)
 
 
-
-Same example as 
+SAME example as 
 
 
 
