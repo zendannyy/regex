@@ -73,11 +73,11 @@ Clean it up with
 
 ### vim regex 
 
-
+![Vim Regex](/images/vim_regex.png)
 
 LOL
 :syntax enable
-Is pretty cool 
+Is pretty cool. Color codes like an IDE editor would
 
 <br>
 
