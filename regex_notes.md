@@ -53,12 +53,12 @@ Searching for traceroute packets with a low TTL
 
 
 More advanced grep 
-![Grep Regex](/images/grep_advanced_regex.png)
+![Grep Regex](/images/grep_https.png)
 
 What's called a lookahead for single and double quotes 
 ?=[‘\“[] at the end of expression means its looking for anything that looks like an https link 
 
-
+![Grep Regex](/images/grep_advanced_explanation.png)
 
 
 
