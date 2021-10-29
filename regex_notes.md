@@ -122,6 +122,8 @@ Experiment with re.findall
 
 Capture Groups 
 
+![Python Regex](/images/Python_Regex.png)
+
 
 Looking for pattern of 4 digits, 2 digits, 2 digits 
 
