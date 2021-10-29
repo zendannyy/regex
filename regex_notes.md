@@ -61,15 +61,14 @@ What's called a lookahead for single and double quotes
 ![Grep Regex](/images/grep_advanced_explanation.png)
 
 
-
-
+<br>
 ### sed
 
 File with weird spaces 
 Clean it up with 
 
 
-
+<br>
 ### vim regex 
 
 
@@ -78,6 +77,7 @@ LOL
 :syntax enable
 Is pretty cool 
 
+<br>
 ### PowerShell
 		 	 	 				
 PowerShell Examples
@@ -95,7 +95,7 @@ My CC number is xxxx-xxxx-xxxx-xxxx
 		
 
 
-
+<br>
 Javascript support for PCRE 
 
 
@@ -105,7 +105,7 @@ Javascript support for PCRE
 Bash-regex script in class folder matches on email or IP addresses 
 Given an argument, it outputs if it matches 
 
-
+<br>
 ### Python Regex 
 
 Import re 
@@ -148,7 +148,7 @@ Python reuters urls
 
 
 
-
+<br>
 ### Log File Analysis with Python 
 
 Opening a file 							
