@@ -67,7 +67,7 @@ What's called a lookahead for single and double quotes
 
 File with weird spaces 
 Clean it up with 
-![Sed Regex](/images/sed_Regex.png)
+![Sed Regex](/images/sed_regex.png)
 
 <br>
 
