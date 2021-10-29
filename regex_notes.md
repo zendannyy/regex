@@ -1,15 +1,15 @@
-Regex Lifestyle  Class 10/26
-
+## Regex Lifestyle  Class 10/26
 
 Joff Thyer 
 
 https://dev.antisyphontraining.com/regular-expressions-your-new-lifestyle-w-joff-thyer/
 
 
-Going over POSIX, BRE, ERE, and PCRE syntax 
+#### Going over POSIX, BRE, ERE, and PCRE syntax 
 
 BRE(basic regex) ERE(extended regex)
 
+#### IP addresses 
 
 From splunk regex 
   regex ip="\d{1,3}.\d{1,3}\.\d{1,3}\.\d{1,3}"
@@ -22,7 +22,7 @@ Matches 0 – 199
 Disable capturing group behavior. Prior character match is optional
 
 
-Linux/Unix 
+#### Linux/Unix 
 
 Grep understand 3 diff versions of regex 
 
@@ -36,8 +36,8 @@ Sed
 
 
 
-Awk (aho, Weibegererm Kernighan) 
-![GitHub Logo](/images/logo.png)
+##### Awk (aho, Weibegererm Kernighan) 
+![Awk Regex](/images/Awk_Regex.png)
 
 
 Searching for the first field, username. .+ is one or more ,the end has to be “bash”
@@ -45,8 +45,7 @@ Printing a subscript 1
 
 
 
-Grep
-
+##### Grep
 
 
 
@@ -64,14 +63,14 @@ What's called a lookahead for single and double quotes
 
 
 
-sed
+##### sed
 
 File with weird spaces 
 Clean it up with 
 
 
 
-vim regex 
+##### vim regex 
 
 
 
@@ -79,7 +78,7 @@ LOL
 :syntax enable
 Is pretty cool 
 
-PowerShell
+##### PowerShell
 		 	 	 				
 PowerShell Examples
 						
@@ -107,7 +106,7 @@ Bash-regex script in class folder matches on email or IP addresses
 Given an argument, it outputs if it matches 
 
 
-Python Regex 
+##### Python Regex 
 
 Import re 
 re.findall(r’BHIS’, r’Yee, we love BHIS’)
@@ -150,7 +149,7 @@ Python reuters urls
 
 
 
-Log File Analysis with Python 
+##### Log File Analysis with Python 
 
 Opening a file 							
 						
