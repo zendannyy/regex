@@ -145,10 +145,11 @@ SAME example as
 
 Side-by-side
 
+Grep reuters urls
+![Grep Regex](/images/grep_https.png) 
 
-Grep reuters urls![Grep Regex](/images/grep_https.png) 
-
-Python reuters urls ![Python RE Reuters](/images/Python_grep.png)
+Python reuters urls 
+![Python RE Reuters](/images/Python_grep.png)
 
 
 
