@@ -9,6 +9,8 @@ https://dev.antisyphontraining.com/regular-expressions-your-new-lifestyle-w-joff
 
 BRE(basic regex) ERE(extended regex)
 
+## Use Cases
+
 ### IP addresses 
 
 From splunk regex 
@@ -20,6 +22,18 @@ Matches 250 - 255
 Matches 200 – 249
 Matches 0 – 199
 Disable capturing group behavior. Prior character match is optional
+
+### Card Addresses
+
+Searching on a specific card type
+
+Visa pattern matching 
+![Visa Regex](/images/visa_regex.png)
+
+
+Mastercard pattern matching 
+![Awk Regex](/images/mastercard_regex.png)
+
 
 
 ### Linux/Unix 
@@ -189,3 +203,4 @@ from datetime import datetime
 
 Course Material 
  "Completed Anti Training" Category will have course material and recording access for 6 months
+
