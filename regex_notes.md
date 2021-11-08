@@ -29,7 +29,7 @@ Searching on a specific card type
 
 Visa pattern matching 
 ![Visa Regex](/images/visa_regex.png)
-<img src="/images/visa_regex.png" alt="visa_" style="height: 200px;">
+<img src="/images/visa_regex.png" alt="visa_" style="height: 400px;">
 
 
 Mastercard pattern matching 
