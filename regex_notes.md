@@ -146,7 +146,9 @@ SAME example as
 Side-by-side
 
 
-Grep reuters urls![Grep Regex Reuters](/images/grep_https.png) | Python reuters urls ![Python RE Reuters](/images/Python_grep.png)
+Grep reuters urls
+------ ![Grep Regex Reuters](/images/grep_https.png) | Python reuters urls 
+------ ![Python RE Reuters](/images/Python_grep.png)
 
 
 
