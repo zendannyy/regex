@@ -52,17 +52,11 @@ Printing a subscript 1
 Searching for traceroute packets with a low TTL 
 
 <br>
-
 More advanced grep 
 ![Grep Regex](/images/grep_https.png)
 
-Note:
-Positive lookahead: (?= «pattern») matches if pattern matches what comes after the current location in the input string. Negative lookahead: (?! «pattern») matches if pattern does not match what comes after the current location in the input string.
-Source: https://www.regextutorial.org/positive-and-negative-lookahead-assertions.php
-
 What's called a lookahead for single and double quotes 
 ?=[‘\“[] at the end of expression means its looking for anything that looks like an https link 
-
 
 ![Grep Regex](/images/grep_advanced_explanation.png)
 
@@ -152,8 +146,7 @@ SAME example as
 Side-by-side
 
 
-Grep reuters urls
-Python reuters urls
+Grep reuters urls![Grep Regex Reuters](/images/grep_https.png) | Python reuters urls ![Python RE Reuters](/images/Python_grep.png)
 
 
 
