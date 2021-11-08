@@ -28,12 +28,13 @@ Disable capturing group behavior. Prior character match is optional
 Searching on a specific card type
 
 Visa pattern matching 
-![Visa Regex]
-<img src="/images/visa_regex.png" alt="visa_" style="height: 440px;">
+
+<img src="/images/visa_regex.png" alt="visa_regex" style="height: 440px;">
 
 
 Mastercard pattern matching 
-![Awk Regex](/images/mastercard_regex.png)
+
+<img src="/images/mastercard_regex.png" alt="mastercard_regex" style="height: 440px;">
 
 
 
