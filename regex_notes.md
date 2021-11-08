@@ -34,7 +34,7 @@ Visa pattern matching
 
 Mastercard pattern matching 
 
-<img src="/images/mastercard_regex.png" alt="mastercard_regex" style="height: 440px;">
+<img src="/images/mastercard_regex.png" alt="mastercard_regex" style="height: 420px;">
 
 
 
