@@ -9,6 +9,19 @@ https://dev.antisyphontraining.com/regular-expressions-your-new-lifestyle-w-joff
 
 BRE(basic regex) ERE(extended regex)
 
+
+Capture Groups
+use () 
+
+vs 
+
+Char Classes
+use []
+
+OR is implied 
+Ex: To match on an a or an e, use [ae]
+
+
 ## Use Cases
 
 ### IP addresses 
@@ -35,7 +48,6 @@ Visa pattern matching
 Mastercard pattern matching 
 
 <img src="/images/mastercard_regex.png" alt="mastercard_regex" style="height: 420px;">
-
 
 
 ### Linux/Unix 
