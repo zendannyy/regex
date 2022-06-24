@@ -17,11 +17,52 @@ vs
 
 Char Classes
 use []
+Ex: to match 800 or 900 numbers
+[8-9]00
 
 OR is implied 
 Ex: To match on an a or an e, use [ae]
 
+. 	matches ANY single character, AKA wildcard
 
+
+"+"      Matches 1 or more (greedy) repetitions of the preceding R
+
+*?,+?,?? Non-greedy versions of the previous three special characters.
+
+\d	single digit
+
+\D	NOT a single digit
+
+\w       Matches any alphanumeric character; equivalent to [a-zA-Z0-9_]
+why would not use \w then?
+
+\W		NOT a single word character
+
+
+\s 		space character (tab,space,newline)
+
+\S 		Not whitespace
+
+
+^		Beginning of string 
+
+$ 		End of string
+
+Ex:
+gns
+^gns 
+vs gns$
+
+234-431-9876
+234.431.9876
+
+SSN's
+sequence is 3-2-4 
+ony digits 
+xxx-xx-xxxx
+
+'\d\d\d-\d\d-\d\d\d\d’
 ## Use Cases
 
 ### IP addresses 
@@ -155,6 +196,9 @@ Capture Groups
 
 Looking for pattern of 4 digits, 2 digits, 2 digits 
 
+
+The re.search() expression scans through a string looking for the first location where the regex pattern produces a match.
+The re.match() expression only matches at the beginning of the string.
 
 Using re.search requires more computing power than re.match. Is there an easy way to test the "cost" of your regex expression?
 
