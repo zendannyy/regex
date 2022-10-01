@@ -16,17 +16,37 @@ use ()
 vs 
 
 Char Classes
+Character classes try to match ind characters within []. 
+
 use []
 Ex: to match 800 or 900 numbers
 [8-9]00
 
+Allow for use of ranges [a-zA-Z] [0-9] etc. 
+
 OR is implied 
 Ex: To match on an a or an e, use [ae]
 
-. 	matches ANY single character, AKA wildcard
+
+Alterations 
+Using | to match what is on the lft of the pipe, then will try to match from left ot right.
 
 
-"+"      Matches 1 or more (greedy) repetitions of the preceding R
+Caveat is Prefixes
+
+cat vs caterpillar 
+
+cat | dog | bird | caterpillar 
+
+Metacharacters
+Charcters with special meaning
+
+. 	matches ANY single character, zero or more. AKA wildcard
+
+
+"+"      Matches 1 or more (greedy) repetitions of the preceding 
+
+? 			 Mathces previosu character 0 or 1 time.	makes the previous token before the "?" 				 optional. 
 
 *?,+?,?? Non-greedy versions of the previous three special characters.
 
@@ -44,6 +64,7 @@ why would not use \w then?
 
 \S 		Not whitespace
 
+\t 		matches tab character
 
 ^		Beginning of string 
 
