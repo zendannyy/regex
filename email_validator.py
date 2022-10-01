@@ -9,7 +9,7 @@ rex = '<[A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]{1,3}>'
 for i in range(int(input())):
     name, email = eu.parseaddr(input())
     if rex.match(email):
-        print(eu.formataddr(name, emaail))
+        print(eu.formataddr(name, email))
 
 
 if __name__ == '__main__':
