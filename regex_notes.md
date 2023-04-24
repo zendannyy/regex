@@ -38,15 +38,56 @@ cat vs caterpillar
 
 cat | dog | bird | caterpillar 
 
+Iteration 
+Uses curly braces {}
+
+Ex: 
+[0-9]{3}
+matches a sequence of 3 numbers, all in one match group.
+
+Non-Capture Groups
+(?:pattern)
+
+Ex: 
+(?:https?|ftp)://([^/\r\n]+)
+in this case, the regex is not looking for https or ftp (protocol), only for // and the rest of pattern
+
+Lookarounds 
+
+Positive Lookeaheads
+(Assert that hte regex matches)
+Ex: (?=HTML)
+
+Negative Lookaheads
+(Assert that the regex does NOT match)
+Ex: (?!HTML)
+
+Anchors 
+
+^		Beginning of string 
+
+$ 		End of string
+
+
+Modifiers 
+(?i)  :disables case sensitivity when matching the pattern (ignore case)
+(?m)  :match beyond the end of a line in a string (multiline) . 
+It makes ^ and $ match the beginning and end of a line, respectively, instead of matching the beginning and end of the input.
+(?s)	:the wildcard ”.” will match line breaks also. (dotall)
+(?x)  :known as comment mode or whitespace mode
+
+
+
+
 Metacharacters
-Charcters with special meaning
+Characters with special meaning
 
 . 	matches ANY single character, zero or more. AKA wildcard
 
 
 "+"      Matches 1 or more (greedy) repetitions of the preceding 
 
-? 			 Mathces previosu character 0 or 1 time.	makes the previous token before the "?" 				 optional. 
+? 			 Matches previous character 0 or 1 time.	makes the previous token before the "?" 				 optional. 
 
 *?,+?,?? Non-greedy versions of the previous three special characters.
 
@@ -111,6 +152,15 @@ Mastercard pattern matching
 
 <img src="/images/mastercard_regex.png" alt="mastercard_regex" style="height: 420px;">
 
+
+
+CSV Data
+
+Looking for anythoing that is not a comma 
+[^ ,]+
+anything that is not a newline 
+
+[^ , \n]+
 
 ### Linux/Unix 
 
@@ -282,4 +332,14 @@ from datetime import datetime
 
 Course Material 
  "Completed Anti Training" Category will have course material and recording access for 6 months
+
+Phone number
+Through regex101 came up with 
+\d\d\d-\d\d\d-\d\d\d\d
+and
+^\d[-]|((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}$
+
+FWIW GPT came up with this one for the prompt 
+write a regex matching against phone numbers with or without parenthesis for the first 3 digits. 
+(\d{3})?-?\d{3}-\d{4}
 
