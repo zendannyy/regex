@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# shebang is for UNix systems, so users PATH is respected
+# shebang is for Unix systems, so users PATH is respected
 
 set -e
 _B='\033[1m'
@@ -23,6 +23,7 @@ echo Trying to match [$1]
 [[ $1 =~ $regex1 ]] && \
     echo -e \* [${_B}$1${_Z}] ${_G}matches regexp${_Z}: $regex1 || \
     echo -e \* [${_B}$1${_Z}] ${_R}DOES NOT MATCH${_Z}: $regex1
+
 [[ $1 =~ $regex2 ]] && \
     echo -e \* [${_B}$1${_Z}] ${_G}matches regexp${_Z}: $regex2 || \
     echo -e \* [${_B}$1${_Z}] ${_R}DOES NOT MATCH${_Z}: $regex2
