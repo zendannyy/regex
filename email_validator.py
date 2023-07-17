@@ -10,7 +10,7 @@ def email_match(email):
     if re.match(rex, email):
         print(eu.parseaddr((email)))
     else:
-        sys.exit("That is an invalid email address")
+        sys.exit(f"{email} is an invalid email address")
 
 
 if __name__ == '__main__':
