@@ -13,11 +13,12 @@ def ip_match(logfile):
                 print(re.search(rex, line).group())
             except AttributeError:
                 sys.exit("no IP found")
+        print('\n')
 
 
 def status_match(logfile):
     "id and extract status codes"
-    rex = "\s\d{3}"
+    rex = "\s[2-5]\d{2}"
     with open('logfile.txt', 'r') as f:
         for line in f:
             try:
