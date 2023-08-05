@@ -22,7 +22,7 @@ def ip_match(logfile):
 
 
 def status_match(logfile):
-    "id and extract status codes"
+    """id and extract status codes"""
     rex = "\s[2-5]\d{2}"
     try:
         with open(logfile, 'r') as f:
