@@ -1,5 +1,6 @@
 import argparse 
 import errno
+import ipaddress
 import re
 import sys
 
@@ -11,7 +12,7 @@ def ip_match(logfile):
     try:
         with open(logfile, 'r') as f:
             for line in f:
-                if re.search(rex, line):
+                # if re.search(rex, line):
                     print(re.search(rex, line).group())
     except FileNotFoundError as fe:
         if fe.errno == errno.ENOENT:
@@ -20,6 +21,18 @@ def ip_match(logfile):
         sys.exit("no IP found")
     print('\n')
 
+def extract_ips_with_lib(logfile):
+    ip_addresses = []
+    with open(logfile, 'r') as f:
+        for line in f:
+            words = line.split()
+            for word in words:
+                try:
+                    ip = ipaddress.ip_address(word)
+                    ip_addresses.append(str(ip))
+                except ValueError:
+                    continue
+    return ip_addresses
 
 def status_match(logfile):
     """id and extract status codes"""
