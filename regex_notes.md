@@ -343,3 +343,6 @@ FWIW GPT came up with this one for the prompt
 write a regex matching against phone numbers with or without parenthesis for the first 3 digits. 
 (\d{3})?-?\d{3}-\d{4}
 
+
+RE2 (Google)
+(https://github.com/google/re2/wiki/Syntax)
