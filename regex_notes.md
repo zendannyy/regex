@@ -345,4 +345,4 @@ write a regex matching against phone numbers with or without parenthesis for the
 
 
 RE2 (Google)
-(https://github.com/google/re2/wiki/Syntax)
+https://github.com/google/re2/wiki/Syntax
