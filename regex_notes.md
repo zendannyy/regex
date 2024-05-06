@@ -84,12 +84,14 @@ Characters with special meaning
 
 . 	matches ANY single character, zero or more. AKA wildcard
 
+\. matches the period character
 
-"+"      Matches 1 or more (greedy) repetitions of the preceding 
 
-? 			 Matches previous character 0 or 1 time.	makes the previous token before the "?" 				 optional. 
+"+"      Matches 1 or more (greedy) repetitions of the preceding character
 
-*?,+?,?? Non-greedy versions of the previous three special characters.
+? 		Matches prev character 0 or 1 time.	makes the prev token before the "?" optional. 
+
+		*?,+?,?? Non-greedy versions of the previous three special characters.
 
 \d	single digit
 
@@ -97,14 +99,17 @@ Characters with special meaning
 
 \w       Matches any alphanumeric character; equivalent to [a-zA-Z0-9_]
 why would not use \w then?
+i.e [A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]{1,3} vs \w+@\w+\.\w{1,3} for email addresses
 
 \W		NOT a single word character
 
-\s 		space character (tab,space,newline)
+\s 		space character (tab, space, newline)
 
 \S 		Not whitespace
 
 \t 		matches tab character
+
+{}		A specified number of occurences of the character within the curly brackets
 
 ^		Beginning of string 
 
@@ -256,6 +261,9 @@ Import re
 re.findall(r’BHIS’, r’Yee, we love BHIS’)
 Would return 
 [‘BHIS’]
+
+re.findall()
+returns all matches for a pattern in the output of a list type
 
 Experiment with re.findall 
 
