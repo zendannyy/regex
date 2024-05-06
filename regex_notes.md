@@ -100,7 +100,6 @@ why would not use \w then?
 
 \W		NOT a single word character
 
-
 \s 		space character (tab,space,newline)
 
 \S 		Not whitespace
