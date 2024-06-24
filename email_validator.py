@@ -24,7 +24,6 @@ def emails_match(csv_file):
         reader = csv.reader(file, delimiter=' ')
         for row in reader:
             data = ' '.join(row)
-            # data = file.read()
             matches = findall(rex, data)
             for match in matches:
                 print(f"{email_match} is a valid email address")
@@ -39,8 +38,6 @@ def main():
     if len(sys.argv) <2:
         sys.exit("Usage: python3 email_validator.py name email\n\n"
         "run python3 email_validator.py -h for full help message")
-    # email = sys.argv[1]
-    # email = sys.argv[2]
 
 
     if args.ind:
@@ -48,14 +45,6 @@ def main():
         
     if args.file:
         emails_match(args.file)
-
-
-# if __name__ == '__main__':
-    # if len(sys.argv) <2:
-    #     sys.exit("Usage: python3 email_validator.py name email")
-    # email = sys.argv[1]
-    # # email = sys.argv[2]
-    # email_match(email)
 
 
 if __name__ == '__main__':
