@@ -87,9 +87,11 @@ Characters with special meaning
 \. matches the period character
 
 
-"+"      Matches 1 or more (greedy) repetitions of the preceding character
+"+"      Matches 1 or more repetitions of the preceding character (greedy)
 
 ? 		Matches prev character 0 or 1 time.	makes the prev token before the "?" optional. 
+
++?		Matches character one or more times (non-greedy)
 
 		*?,+?,?? Non-greedy versions of the previous three special characters.
 
@@ -266,6 +268,15 @@ re.findall()
 returns all matches for a pattern in the output of a list type
 
 Experiment with re.findall 
+
+Given the string, 'From: using the : char'
+
+Compare the following 
+re.findall('^F.+:', x)
+vs
+re.findall('^F.+?:', x)
+
+The first is using Greedy mode, the second using non-Greedy mode.  
 
 Capture Groups 
 
