@@ -10,12 +10,12 @@ https://dev.antisyphontraining.com/regular-expressions-your-new-lifestyle-w-joff
 BRE(basic regex) ERE(extended regex)
 
 
-Capture Groups
+## Capture Groups
 use () 
 
 vs 
 
-Char Classes
+## Char Classes
 Character classes try to match ind characters within []. 
 
 use []
@@ -69,7 +69,7 @@ Anchors
 $ 		End of string
 
 
-Modifiers 
+### Modifiers 
 (?i)  :disables case sensitivity when matching the pattern (ignore case)
 (?m)  :match beyond the end of a line in a string (multiline) . 
 It makes ^ and $ match the beginning and end of a line, respectively, instead of matching the beginning and end of the input.
@@ -79,7 +79,7 @@ It makes ^ and $ match the beginning and end of a line, respectively, instead of
 
 
 
-Metacharacters
+### Metacharacters
 Characters with special meaning
 
 . 	matches ANY single character, zero or more. AKA wildcard
@@ -162,7 +162,7 @@ Mastercard pattern matching
 
 CSV Data
 
-Looking for anythoing that is not a comma 
+Looking for anything that is not a comma 
 [^ ,]+
 anything that is not a newline 
 
@@ -177,7 +177,6 @@ Grep understand 3 diff versions of regex
 
 Sed 
 -E 
-
 
 
 
@@ -241,7 +240,6 @@ My CC number is xxxx-xxxx-xxxx-xxxx
 					
 				
 			
-		
 
 
 <br>
@@ -303,7 +301,6 @@ SAME example as
 
 
 
-
 Side-by-side
 
 Grep reuters urls
@@ -313,9 +310,6 @@ Grep reuters urls
 Python reuters urls 
 
 ![Python RE Reuters](/images/Python_grep.png)
-
-
-
 
 
 
@@ -348,10 +342,8 @@ from datetime import datetime
 
 
 
-Course Material 
- "Completed Anti Training" Category will have course material and recording access for 6 months
 
-Phone number
+### Phone number
 Through regex101 came up with 
 \d\d\d-\d\d\d-\d\d\d\d
 and
