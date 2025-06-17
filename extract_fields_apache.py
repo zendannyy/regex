@@ -5,7 +5,10 @@ import re
 import sys
 
 def ip_match(logfile):
-    """id and extract IP's"""
+    """id and extract IP's
+    alt re pattern with named capture groups 
+    (?P<IP_Octet>\d{1,3})\.(?P<IP_Octetll>\d{1,3})\.(?P<IP_Octetlll>\d{1,3})\.(?P<IP_OctetlV>\d{1,3})
+    """
     rex = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
     print(f'The following IP addresses and Status Codes were found in the logfile \n')
     
