@@ -3,10 +3,12 @@ import re
 from re import findall
 
 def phone_match():
-    """take phone numbers as input 
-    print valid phone numbers as output
+    """Take phone numbers as input 
+
+    Return valid phone numbers as output
     another pattern to match is 
-    # (?mx)^(?:\+\d{1,2}\ )?\(?\d{3}\)?[\ \.-]\d{3}[\ \.-]\d{4}"""
+    (?mx)^(?:\+\d{1,2}\ )?\(?\d{3}\)?[\ \.-]\d{3}[\ \.-]\d{4}
+    """
     with open('phone_numbers.csv') as file:
         reader = csv.reader(file, delimiter=' ')
         line_count = 0 
