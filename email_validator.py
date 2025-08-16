@@ -6,8 +6,8 @@ from re import findall
 
 def email_match(email):
     """check if input is a valid email
-    print name and email"""
-    rex = r'[A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]{1,3}'
+    Return name and email"""
+    rex = r'[A-Za-z][\w.\-+]+@[A-Za-z]+\.[A-Za-z]{1,3}'
     # name, email = eu.parseaddr(input())
     if re.match(rex, email):
         print(f"{email}, is a valid email address")
@@ -19,7 +19,7 @@ def emails_match(csv_file):
     """takes a csv as an argument
     parses the file and extracts valid email addresses
     """
-    rex = r'[A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]{1,3}'
+    rex = r'[A-Za-z][\w.\-+]+@[A-Za-z]+\.[A-Za-z]{1,3}'
     with open(csv_file, 'r') as file:
         reader = csv.reader(file, delimiter=' ')
         for row in reader:
