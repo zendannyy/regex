@@ -34,6 +34,9 @@ def main():
     if len(sys.argv) <2:
         sys.exit("Usage: python3 phone_number_validator.py file\n\n"
         "run python3 phone_number_validator.py -h for full help message")
+        
+    if args.ind:
+        phone_match(args.ind)
 
     if args.file:
         phone_match(args.file)
