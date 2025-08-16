@@ -7,20 +7,21 @@ from re import findall
 def phone_match(csv_file):
     """Take a csv with phone numbers as input 
     parses the file and extracts valid phone numbers
-    
+
     Return valid phone numbers as output
     """
-    with open(csv_file, 'r') as file:
-        reader = csv.reader(file, delimiter=',')
-        # line_count = 0 
-        rex = r'(?:\+1)?\d{3}-\d{3}-\d{4}|\d{3}\s*-\d{3}-\d{4}'
-        for row in reader:
-            data = ' '.join(row)
-            matches = findall(rex, data)
-            for match in matches:
-                print(f"{match} is a valid phone number")
-        # if line_count == 0:
-        #     print(f'This is the matching data {','.join(row)}')
+    try:
+        with open(csv_file, 'r') as file:
+            reader = csv.reader(file, delimiter=',')
+            # line_count = 0 
+            rex = r'(?:\+1)?\d{3}-\d{3}-\d{4}|\d{3}\s*-\d{3}-\d{4}'
+            for row in reader:
+                data = ' '.join(row)
+                matches = findall(rex, data)
+                for match in matches:
+                    print(f"{match} is a valid phone number")
+    except FileNotFoundError:
+        print(f"Error: File {csv_file} does not exist")
 
 
 def main():
