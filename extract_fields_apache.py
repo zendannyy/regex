@@ -9,7 +9,7 @@ def ip_match(logfile):
     alt re pattern with named capture groups 
     (?P<IP_Octet>\d{1,3})\.(?P<IP_Octetll>\d{1,3})\.(?P<IP_Octetlll>\d{1,3})\.(?P<IP_OctetlV>\d{1,3})
     """
-    rex = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+    rex = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
     print(f'The following IP addresses and Status Codes were found in the logfile \n')
     
     try:
@@ -39,7 +39,7 @@ def extract_ips_with_lib(logfile):
 
 def status_match(logfile):
     """id and extract status codes"""
-    rex = "\s[2-5]\d{2}"
+    rex = r"\s[2-5]\d{2}"
     try:
         with open(logfile, 'r') as f:
             for line in f:
@@ -53,7 +53,7 @@ def status_match(logfile):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Read log file, parse & extract IP addresses.')
+    parser = argparse.ArgumentParser(description='Read log file, parse & extract IP addresses and status codes.')
     parser.add_argument('logfile', type=str, help='The name of the log file to parse')
     args = parser.parse_args()
     ip_match(args.logfile)
