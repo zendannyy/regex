@@ -5,7 +5,7 @@ import re
 import sys
 
 def ip_match(logfile):
-    """id and extract IP's
+    """parse and extract IP's
     alt re pattern with named capture groups 
     (?P<IP_Octet>\d{1,3})\.(?P<IP_Octetll>\d{1,3})\.(?P<IP_Octetlll>\d{1,3})\.(?P<IP_OctetlV>\d{1,3})
     """
@@ -25,6 +25,8 @@ def ip_match(logfile):
     print('\n')
 
 def extract_ips_with_lib(logfile):
+    """parse and extract IP's
+    the same as above function, but with ipaddress library"""
     ip_addresses = []
     with open(logfile, 'r') as f:
         for line in f:
@@ -38,7 +40,7 @@ def extract_ips_with_lib(logfile):
     return ip_addresses
 
 def status_match(logfile):
-    """id and extract status codes"""
+    """parse and extract status codes"""
     rex = r"\s[2-5]\d{2}"
     try:
         with open(logfile, 'r') as f:
