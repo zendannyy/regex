@@ -15,7 +15,6 @@ def ip_match(logfile):
     try:
         with open(logfile, 'r') as f:
             for line in f:
-                # if re.search(rex, line):
                     print(re.search(rex, line).group())
     except FileNotFoundError as fe:
         if fe.errno == errno.ENOENT:
