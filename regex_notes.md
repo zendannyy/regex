@@ -192,7 +192,7 @@ Printing a subscript 1
 
 ### Grep
 
-![Grep Regex](/images/grep_regex.png)
+[Grep Regex](/images/grep_regex.png)
 
 Searching for traceroute packets with a low TTL 
 

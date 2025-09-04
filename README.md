@@ -1,2 +1,2 @@
 # regex
-regex notes
+see regex notes for extensive documentation
