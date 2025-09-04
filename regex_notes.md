@@ -192,7 +192,7 @@ Printing a subscript 1
 
 ### Grep
 
-[Grep Regex](/images/grep_regex.png)
+![Grep Regex](/images/grep_regex.png)
 
 Searching for traceroute packets with a low TTL 
 
@@ -222,7 +222,7 @@ Clean it up with
 
 LOL
 :syntax enable
-Is pretty cool. Color codes like an IDE editor would
+Color codes like an IDE editor would
 
 <br>
 
