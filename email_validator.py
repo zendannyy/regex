@@ -26,7 +26,7 @@ def emails_match(csv_file):
             data = ' '.join(row)
             matches = findall(rex, data)
             for match in matches:
-                print(f"{email_match} is a valid email address")
+                print(f"{match} is a valid email address")
 
 def main():
     parser = argparse.ArgumentParser(description="""CLI tool for validating emails. With the choice of individual emails, or a csv file.""")

@@ -9,7 +9,7 @@ def matches(logfile):
     ip_rex = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
     status_rex = "\s\d{3}\s"
 
-    with open('logfile.txt', 'r') as f:
+    with open(logfile, 'r') as f:
         for line in f:
             try:
                 # if re.search(rex, line):
@@ -20,7 +20,6 @@ def matches(logfile):
             except AttributeError:
                 sys.exit("no IP or Status Code found")
                 re.search()
-
 
 def main():
     parser = argparse.ArgumentParser(description='Read log file, parse & extract IP addresses.')
