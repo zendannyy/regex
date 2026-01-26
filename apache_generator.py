@@ -22,14 +22,12 @@ def log_file(logfile):
         status_code = random.choice(status_codes)
         size = random.randint(2000, 5000)
         
-        # Print log entry
         # print(f"{time.isoformat()} {ip} - - {request} {status_code} {size}")
         log_lines.append(f"{time.strftime(TIME_FORMAT)} {ip} - - {request} {status_code} {size}")
         
         # Increment time by 1 minute
         time += timedelta(minutes=1)
 
-     # with open('log.txt', 'w') as f:
     with open(logfile, 'w') as f:
         for line in log_lines:
             f.write(line + '\n')
