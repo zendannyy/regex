@@ -4,9 +4,10 @@ from datetime import datetime, timedelta
 
 
 def log_file(logfile):
-    # List of sample IP addresses
+    """ Input: List of sample IP addresses
+    List of sample request lines"""
     ips = ["192.0.2." + str(i) for i in range(1, 101)]
-    # List of sample request lines
+
     requests = ['"GET /index.html HTTP/1.1"', '"POST /form.php HTTP/1.1"', '"GET /products.html HTTP/1.1"']
     # List of sample status codes
     status_codes = [200, 302, 304, 404, 500]
@@ -44,4 +45,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
