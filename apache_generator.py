@@ -32,7 +32,6 @@ def log_file(logfile):
     with open(logfile, 'w') as f:
         for line in log_lines:
             f.write(line + '\n')
-
     return log_lines
 
 
