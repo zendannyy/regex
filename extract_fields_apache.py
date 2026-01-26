@@ -1,8 +1,11 @@
 import argparse 
 import errno
 import ipaddress
+import logging
 import re
 import sys
+
+logger = logging.getLogger(__name__)
 
 def ip_match(logfile):
     """parse and extract IP's
@@ -21,7 +24,7 @@ def ip_match(logfile):
             print(f"File '{logfile}' does not exist")
     except AttributeError:
         sys.exit("no IP found")
-    print('\n')
+    logger.info('\n')
 
 def extract_ips_with_lib(logfile):
     """parse and extract IP's
@@ -48,7 +51,7 @@ def status_match(logfile):
                 print(re.search(rex, line).group())
     except FileNotFoundError as fe:
          if fe.errno == errno.ENOENT:
-            print(f"File '{logfile}' does not exist")
+            logger.info(f"File %s logfile does not exist")
     except AttributeError:
         sys.exit("no Status Code found")
 
