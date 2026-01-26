@@ -4,12 +4,11 @@ from datetime import datetime, timedelta
 
 
 def log_file(logfile):
-    """ Input: List of sample IP addresses
+    """Input: List of sample IP addresses
     List of sample request lines"""
     ips = ["192.0.2." + str(i) for i in range(1, 101)]
 
     requests = ['"GET /index.html HTTP/1.1"', '"POST /form.php HTTP/1.1"', '"GET /products.html HTTP/1.1"']
-    # List of sample status codes
     status_codes = [200, 302, 304, 404, 500]
 
     # Start time
@@ -25,7 +24,6 @@ def log_file(logfile):
         
         # print(f"{time.isoformat()} {ip} - - {request} {status_code} {size}")
         log_lines.append(f"{time.strftime(TIME_FORMAT)} {ip} - - {request} {status_code} {size}")
-        
         # Increment time by 1 minute
         time += timedelta(minutes=1)
 
