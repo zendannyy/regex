@@ -49,7 +49,8 @@ def extract_text_from_pdf(pdf_path):
 
 def domain_match(logfile):
     """parse and extract domains"""
-    rex = r"\b\w+[.]\w{1,3}"
+    # Support fanged and defanged domains, e.g. api.example.com / api.example[.]com
+    rex = r"\b(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.|\[\.\]))+(?:[A-Za-z]{2,63})\b"
     logger.info(f'The following domains were found in the logfile \n')
 
     found = False
@@ -120,7 +121,50 @@ def status_match(logfile):
          if fe.errno == errno.ENOENT:
             logger.info(f"File %s logfile does not exist")
     if not found:
-        sys.exit("no Status Code found")
+        logger.warning("no Status Code found")
+
+
+def fanged_ioc_match(logfile):
+    """Parse and extract fanged IOCs: IPs, domains, URLs, and hashes."""
+    patterns = {
+        "ipv4": re.compile(
+            r"\b(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}"
+            r"(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\b"
+        ),
+        "domain": re.compile(
+            r"\b(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.|\[\.\]))+(?:[A-Za-z]{2,63})\b"
+        ),
+        # Match full URL for both fanged and common defanged forms:
+        # https://example.com/path and hxxps://api.example[.]com/path
+        "url": re.compile(r"\b(?:https?|hxxps?)://[^\s\"'<>]+"),
+        "sha256": re.compile(r"\b[a-fA-F0-9]{64}\b"),
+    }
+
+    iocs = {key: set() for key in patterns}
+
+    try:
+        for line in iter_text_lines(logfile):
+            for ioc_type, pattern in patterns.items():
+                for match in pattern.findall(line):
+                    iocs[ioc_type].add(match)
+    except FileNotFoundError as fe:
+        if fe.errno == errno.ENOENT:
+            logger.error(f"File '{logfile}' does not exist")
+        return
+
+    logger.info("The following fanged IOCs were found in the logfile\n")
+    found_any = False
+    for ioc_type in ("url", "domain", "ipv4", "sha256"):
+        if not iocs[ioc_type]:
+            continue
+        found_any = True
+        print(f"[{ioc_type}]")
+        for value in sorted(iocs[ioc_type]):
+            print(value)
+        print()
+
+    if not found_any:
+        logger.warning("no fanged IOCs found")
 
 
 def main():
@@ -136,6 +180,7 @@ def main():
     args = parser.parse_args()
     ip_match(args.logfile)
     domain_match(args.logfile)
+    fanged_ioc_match(args.logfile)
     status_match(args.logfile)
 
 
