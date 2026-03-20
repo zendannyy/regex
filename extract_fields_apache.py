@@ -8,7 +8,6 @@ from pathlib import Path
 
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 try:
     import fitz  # PyMuPDF
@@ -108,6 +107,8 @@ def extract_ips_with_lib(logfile):
 def status_match(logfile):
     """parse and extract status codes"""
     rex = r"\s[2-5]\d{2}"
+    logger.info(f'The following Status Codes were found in the logfile \n')
+
     found = False
     try:
         for line in iter_text_lines(logfile):
