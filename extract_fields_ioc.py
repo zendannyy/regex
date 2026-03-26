@@ -137,10 +137,9 @@ def fanged_ioc_match(logfile):
         if not iocs[ioc_type]:
             continue
         found_any = True
-        print(f"[{ioc_type}]")
+        logger.info(f"[{ioc_type}]")
         for value in sorted(iocs[ioc_type]):
-            print(value)
-        print()
+            logger.info(f"{value}\n")
     if not found_any:
         logger.warning("no fanged IOCs found")
 
