@@ -37,88 +37,99 @@ def extract_text_from_pdf(pdf_path):
 
 
 def domain_match(logfile):
-    """parse and extract domains
-    Supports fanged and defanged domains, e.g. api.example.com / api.example[.]com"""
-    rex = r"\b(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.|\[\.\]))+(?:[A-Za-z]{2,63})\b"
+    """parse and extract domains. Supports fanged and defanged domains"""
+    rex = re.compile(
+        r"\b(?:[A-Za-z0-9-]+(?:\.|\[\.\]))+[A-Za-z]{2,63}\b")
+    found = set()
+    
     try:
         for line in iter_text_lines(logfile):
-            match = re.search(rex, line)
-            if match:
-                print(match.group())
+            found.update(rex.findall(line))
     except FileNotFoundError:
         logger.error(f"File '{logfile}' does not exist")
-    logger.info("\n")
-
+    if found:
+        logger.info("[domain]")
+        for value in sorted(found):
+            print(value)
+    else:
+        logger.warning("no domains found\n")
 
 def ip_match(logfile):
     """parse and extract IP's
     alt re pattern with named capture groups 
     (?P<IP_Octet>\\d{1,3})\\.(?P<IP_Octetll>\\d{1,3})\\.(?P<IP_Octetlll>\\d{1,3})\\.(?P<IP_OctetlV>\\d{1,3})"""
-    rex = r"\b(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\b"
-    logger.info(f'The following IP addresses were found in the logfile \n')
+    rex = re.compile(
+        r"\b(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\b")
     
-    found = False
+    found = set()
     try:
         for line in iter_text_lines(logfile):
-            match = re.search(rex, line)
-            if match:
-                print(match.group())
+            found.update(rex.findall(line))
     except FileNotFoundError:
         logger.error(f"File '{logfile}' does not exist")
-    logger.info("\n")
+    if found:
+        logger.info("[IPs]")
+        for value in sorted(found):
+            print(value)
+    else:
+        logger.warning("\nno IPs found\n")
 
 
 def status_match(logfile):
     """parse and extract status codes"""
-    rex = r"\s[2-5]\d{2}"
-    logger.info(f'The following Status Codes were found in the logfile \n')
+    rex = re.compile(r"\s[2-5]\d{2}")
 
-    found = False
+    found = set()
     try:
         for line in iter_text_lines(logfile):
-            match = re.search(rex, line)
-            if match:
-                print(match.group())
-                found = True
+            found.update(rex.findall(line))
     except FileNotFoundError:
         logger.error(f"File '{logfile}' does not exist")
-    if not found:
-        logger.warning("no Status Code found")
+    if found:
+        logger.info("[Status Codes]")
+        for value in sorted(found):
+            print(value)
+    else:
+        logger.warning("\nno Status Code found")
 
 
 def url_match(logfile):
     """parse and extract full URLs"""
     # Support fanged and defanged URLs, e.g. https://api.example.com,  https://api.example[.]com
-    rex = r"\bhttps?(:|\[:])//[^\s\"'<>]+\b"
+    rex = re.compile(
+        r"\bhttps?(:|\[:])//[^\s\"'<>]+\b")
     logger.info(f'The following URLs were found in the logfile \n')
 
-    found = False
+    found = set()
     try:
         for line in iter_text_lines(logfile):
-            match = re.search(rex, line)
-            if match:
-                print(match.group())
-                found = True
+            found.update(rex.findall(line))
     except FileNotFoundError as fe:
-        if fe.errno == errno.ENOENT:
             logger.error(f"File '{logfile}' does not exist")
-
-    logger.info('\n')
+    if found:
+        logger.info("[URLs]")
+        for value in sorted(found):
+            print(value)
+    else:
+        logger.warning('\nNo URLs found')
 
 def fanged_ioc_match(logfile):
-    """Parse and extract fanged IOCs: IPs, domains, URLs, and hashes."""
+    """Single pass: IPv4, domains, URLs (incl. hxxps / defanged https[:]), SHA256, HTTP status codes."""
+    url_loose = re.compile(r"\b(?:https?|hxxps?)://[^\s\"'<>]+")
+    # Same cases as url_match (https:// and https[:]//); non-capturing for findall.
+    url_strict = re.compile(r"\bhttps?(?:\[:]|:)//[^\s\"'<>]+\b")
     patterns = {
         "ipv4": re.compile(
             r"\b(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}"
             r"(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\b"
         ),
         "domain": re.compile(
-            r"\b(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.|\[\.\]))+(?:[A-Za-z]{2,63})\b"
+            r"\b(?:[A-Za-z0-9-]+(?:\.|\[\.\]))+[A-Za-z]{2,63}\b"
         ),
-        # Match full URL for both fanged and common defanged forms:
-        # https://example.com/path and hxxps://api.example[.]com/path
+        # Match full URL for both fanged & common defanged: https://example.com/path and hxxps://api.example[.]com/path
         "url": re.compile(r"\b(?:https?|hxxps?)://[^\s\"'<>]+"),
         "sha256": re.compile(r"\b[a-fA-F0-9]{64}\b"),
+        "status": re.compile(r"\s[2-5]\d{2}"),
     }
     iocs = {key: set() for key in patterns}
 
@@ -131,23 +142,22 @@ def fanged_ioc_match(logfile):
         logger.error(f"File '{logfile}' does not exist")
         return
 
-    logger.info("The following fanged IOCs were found in the logfile\n")
+    logger.info("The following IOCs were found in the logfile\n")
     found_any = False
-    for ioc_type in ("url", "domain", "ipv4", "sha256"):
+    for ioc_type in ("url", "domain", "ipv4", "sha256", "status"):
         if not iocs[ioc_type]:
             continue
         found_any = True
         logger.info(f"[{ioc_type}]")
         for value in sorted(iocs[ioc_type]):
-            logger.info(f"{value}\n")
+            logger.info(f"{value}")
     if not found_any:
         logger.warning("no fanged IOCs found")
 
-
 def main():
+    logging.basicConfig(level=logging.INFO, format="%(message)s\n")
     parser = argparse.ArgumentParser(
-        description='Read log file, parse & extract IP addresses and status codes.'
-        """
+        description="""Read log file, parse & extract IP addresses and status codes.
         Examples: 
         python3 extract_fields.py server_logs.log
         python3 extract_fields.py server_logs.pdf
@@ -175,8 +185,6 @@ def main():
             status_match(args.logfile)
     else:
         fanged_ioc_match(args.logfile)
-        status_match(args.logfile)
-
 
 if __name__ == "__main__":
     main()
