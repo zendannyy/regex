@@ -2,7 +2,7 @@
 
 Joff Thyer 
 
-https://dev.antisyphontraining.com/regular-expressions-your-new-lifestyle-w-joff-thyer/
+[AntiSyphon Training](https://dev.antisyphontraining.com/regular-expressions-your-new-lifestyle-w-joff-thyer/)
 
 
 ## Going over POSIX, BRE, ERE, and PCRE syntax 
